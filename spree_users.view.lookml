@@ -121,5 +121,5 @@
 
   - measure: count
     type: count
-    drill_fields: [id]
+    drill_fields: [id, first_name, last_name, username, local_chapter_members.count]
 
