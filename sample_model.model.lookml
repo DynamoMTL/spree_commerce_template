@@ -1,4 +1,4 @@
-- connection: littlebits_bi_slave
+- connection: sample_connection_name 
 
 - include: "template.model.lookml"
 

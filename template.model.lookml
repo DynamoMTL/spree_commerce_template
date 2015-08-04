@@ -1,4 +1,4 @@
-- connection: littlebits_bi_slave
+- connection: sample_connection_name
 
 - scoping: true           # for backward compatibility
 - include: "spree_*.view.lookml"       # include all raw views
