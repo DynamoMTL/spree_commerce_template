@@ -36,7 +36,12 @@
     type: int
     sql: ${TABLE}.canceler_id
 
+  - dimension: cchs_requested
+    type: int
+    sql: ${TABLE}.cchs_requested
+
   - dimension: channel
+    type: string
     sql: ${TABLE}.channel
 
   - dimension_group: completed
@@ -44,12 +49,16 @@
     timeframes: [time, date, week, month]
     sql: ${TABLE}.completed_at
 
+  - dimension: confirmation_code
+    type: string
+    sql: ${TABLE}.confirmation_code
+
   - dimension: confirmation_delivered
-    type: yesno
+    type: int
     sql: ${TABLE}.confirmation_delivered
 
   - dimension: considered_risky
-    type: yesno
+    type: int
     sql: ${TABLE}.considered_risky
 
   - dimension_group: created
@@ -62,17 +71,42 @@
     sql: ${TABLE}.created_by_id
 
   - dimension: currency
+    type: string
     sql: ${TABLE}.currency
 
   - dimension: email
+    type: string
     sql: ${TABLE}.email
 
+  - dimension: first_name
+    type: string
+    sql: ${TABLE}.first_name
+
+  - dimension: friendbuy
+    type: int
+    sql: ${TABLE}.friendbuy
+
+  - dimension: guest_checkout
+    type: int
+    sql: ${TABLE}.guest_checkout
+
   - dimension: guest_token
+    type: string
     sql: ${TABLE}.guest_token
 
   - dimension: included_tax_total
     type: number
     sql: ${TABLE}.included_tax_total
+
+  - dimension_group: invoice
+    type: time
+    timeframes: [date, week, month]
+    convert_tz: false
+    sql: ${TABLE}.invoice_date
+
+  - dimension: invoice_number
+    type: int
+    sql: ${TABLE}.invoice_number
 
   - dimension: item_count
     type: int
@@ -83,17 +117,28 @@
     sql: ${TABLE}.item_total
 
   - dimension: last_ip_address
+    type: string
     sql: ${TABLE}.last_ip_address
 
+  - dimension: last_name
+    type: string
+    sql: ${TABLE}.last_name
+
   - dimension: number
+    type: string
     sql: ${TABLE}.number
 
   - dimension: payment_state
+    type: string
     sql: ${TABLE}.payment_state
 
   - dimension: payment_total
     type: number
     sql: ${TABLE}.payment_total
+
+  - dimension: phone
+    type: string
+    sql: ${TABLE}.phone
 
   - dimension: promo_total
     type: number
@@ -104,6 +149,7 @@
     sql: ${TABLE}.ship_address_id
 
   - dimension: shipment_state
+    type: string
     sql: ${TABLE}.shipment_state
 
   - dimension: shipment_total
@@ -115,9 +161,11 @@
     sql: ${TABLE}.shipping_method_id
 
   - dimension: special_instructions
+    type: string
     sql: ${TABLE}.special_instructions
 
   - dimension: state
+    type: string
     sql: ${TABLE}.state
 
   - dimension: state_lock_version
@@ -143,5 +191,5 @@
 
   - measure: count
     type: count
-    drill_fields: [id]
+    drill_fields: [id, first_name, last_name]
 

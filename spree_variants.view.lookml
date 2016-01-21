@@ -7,6 +7,7 @@
     sql: ${TABLE}.id
 
   - dimension: cost_currency
+    type: string
     sql: ${TABLE}.cost_currency
 
   - dimension: cost_price
@@ -27,18 +28,31 @@
     sql: ${TABLE}.height
 
   - dimension: is_master
-    type: yesno
+    type: int
     sql: ${TABLE}.is_master
+
+  - dimension: original_price
+    type: number
+    sql: ${TABLE}.original_price
 
   - dimension: position
     type: int
     sql: ${TABLE}.position
 
+  - dimension: preorder
+    type: int
+    sql: ${TABLE}.preorder
+
   - dimension: product_id
     type: int
     sql: ${TABLE}.product_id
 
+  - dimension: sale
+    type: int
+    sql: ${TABLE}.sale
+
   - dimension: sku
+    type: string
     sql: ${TABLE}.sku
 
   - dimension: stock_items_count
@@ -50,7 +64,7 @@
     sql: ${TABLE}.tax_category_id
 
   - dimension: track_inventory
-    type: yesno
+    type: int
     sql: ${TABLE}.track_inventory
 
   - dimension_group: updated

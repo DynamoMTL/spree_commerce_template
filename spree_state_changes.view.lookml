@@ -12,12 +12,15 @@
     sql: ${TABLE}.created_at
 
   - dimension: name
+    type: string
     sql: ${TABLE}.name
 
   - dimension: next_state
+    type: string
     sql: ${TABLE}.next_state
 
   - dimension: previous_state
+    type: string
     sql: ${TABLE}.previous_state
 
   - dimension: stateful_id
@@ -25,6 +28,7 @@
     sql: ${TABLE}.stateful_id
 
   - dimension: stateful_type
+    type: string
     sql: ${TABLE}.stateful_type
 
   - dimension_group: updated

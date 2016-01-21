@@ -1,12 +1,13 @@
 - connection: shop-smartthings-com
 
-- scoping: true           # for backward compatibility
-- include: "spree_*.view.lookml"       # include all raw views
-- include: "template_*.view.lookml"
-- include: "*.dashboard.lookml"  # include all dashboards in this project
+# - scoping: true           # for backward compatibility
+# - include: "spree_*.view.lookml"       # include all raw views
+# - include: "template_*.view.lookml"
+# - include: "*.dashboard.lookml"  # include all dashboards in this project
+
 
 - explore: template_line_items
-#   extension: required
+  extension: required
   label: 'Orders & Line Items'
   conditionally_filter:
     unless: [orders.date_fields*, line_items.date_fields*, orders_monthly_cohort.created_month, subsequent_order_facts.date_fields*]

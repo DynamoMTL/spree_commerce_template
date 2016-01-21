@@ -10,9 +10,17 @@
     type: number
     sql: ${TABLE}.additional_tax_total
 
+  - dimension: additional_text
+    type: string
+    sql: ${TABLE}.additional_text
+
   - dimension: adjustment_total
     type: number
     sql: ${TABLE}.adjustment_total
+
+  - dimension: cchs_installation
+    type: int
+    sql: ${TABLE}.cchs_installation
 
   - dimension: cost_price
     type: number
@@ -24,7 +32,16 @@
     sql: ${TABLE}.created_at
 
   - dimension: currency
+    type: string
     sql: ${TABLE}.currency
+
+  - dimension: immutable
+    type: int
+    sql: ${TABLE}.immutable
+
+  - dimension: immutable_by
+    type: int
+    sql: ${TABLE}.immutable_by
 
   - dimension: included_tax_total
     type: number
