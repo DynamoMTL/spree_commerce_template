@@ -36,5 +36,5 @@
   - dimension: total_revenue_over_total_cohort_size
     type: number
     sql: ${orders.total_revenue} / ${total_cohort_size}
-    value_format: "$%.2f"
+#     value_format: "$%.2f"
     

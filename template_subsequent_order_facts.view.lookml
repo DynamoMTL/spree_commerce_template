@@ -98,17 +98,17 @@
   - measure: repeat_rate_90
     type: number
     sql: 100.0 * ${orders_with_followups_in_90_days_count} / NULLIF(${users_count},0)
-    value_format: '%0.2f%'
+#     value_format: '%0.2f%'
     
   - measure: repeat_rate_180
     type: number
     sql: 100.0 * ${orders_with_followups_in_180_days_count} / NULLIF(${users_count},0)
-    value_format: '%0.2f%'
+#     value_format: '%0.2f%'
     
   - measure: repeat_rate_365
     type: number
     sql: 100.0 * ${orders_with_followups_in_365_days_count} / NULLIF(${users_count},0)
-    value_format: '%0.2f%'
+#     value_format: '%0.2f%'
 
   sets:
     detail:

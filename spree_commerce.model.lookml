@@ -6,7 +6,7 @@
 - include: "*.dashboard.lookml"  # include all dashboards in this project
 
 - explore: template_line_items
-  extension: required
+#   extension: required
   label: 'Orders & Line Items'
   conditionally_filter:
     unless: [orders.date_fields*, line_items.date_fields*, orders_monthly_cohort.created_month, subsequent_order_facts.date_fields*]
