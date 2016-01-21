@@ -1,11 +1,8 @@
 #
 # This is an exact replica of http://www.looker.com/blog/recommendations-are-easier-than-you-think
 #
-
 - view: template_user_product_affinity
   derived_table:
-    sql_trigger_value: SELECT CURDATE()
-    indexes: [product_a]
     sql: |
       SELECT
         product_a

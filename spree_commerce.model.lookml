@@ -1,4 +1,4 @@
-- connection: sample_connection_name
+- connection: shop-smartthings-com
 
 - scoping: true           # for backward compatibility
 - include: "spree_*.view.lookml"       # include all raw views
@@ -8,15 +8,11 @@
 - explore: template_line_items
   extension: required
   label: 'Orders & Line Items'
-#  sql_always_where: |
-#    ${orders.consolidation_filter}
-#    AND
-#    ${orders.user_id} > 0
   conditionally_filter:
     unless: [orders.date_fields*, line_items.date_fields*, orders_monthly_cohort.created_month, subsequent_order_facts.date_fields*]
-  #always_filter:
-    # If users need to compare locked vs non-locked orders, set this to "is any value" in explore
-  #  orders.is_locked_order: 'Yes'
+  always_filter:
+#     If users need to compare locked vs non-locked orders, set this to "is any value" in explore
+   orders.state: 'complete'
 
   joins:
     - join: orders
@@ -70,9 +66,9 @@
   extension: required
   label: 'Product Catalog'
 
-- explore: template_user_product_affinity
-  extension: required
-  label: 'Product Affinity - by Users'
+# - explore: template_user_product_affinity
+#   extension: required
+#   label: 'Product Affinity - by Users'
 
 - explore: template_order_product_affinity
   extension: required
