@@ -40,6 +40,12 @@
     timeframes: [time, date, week, month]
     sql: ${TABLE}.updated_at
 
+  # FIELDS FROM OTHER TABLES
+
+  - dimension: reason
+    sql: ${return_authorization_reasons.name}
+
+
   - measure: count
     type: count
     drill_fields: [id]
