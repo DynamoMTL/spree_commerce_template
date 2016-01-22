@@ -11,8 +11,7 @@
       
       
       from spree_orders
-      where locked_at > 0
-      and user_id > 0
+      where user_id > 0
       group by user_id
       
 

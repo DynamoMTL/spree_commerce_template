@@ -12,8 +12,7 @@
           user_id
         , min(completed_at) as first_order
         FROM spree_orders
-        WHERE locked_at > 0
-          AND user_id > 0
+        WHERE user_id > 0
         GROUP BY user_id) as u
       GROUP BY 1
 

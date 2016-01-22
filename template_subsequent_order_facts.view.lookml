@@ -18,7 +18,7 @@
       LEFT JOIN spree_orders AS so
         ON o.user_id = so.user_id
           
-      WHERE DATE(o.locked_at) > 0 AND DATE(so.locked_at) > 0
+  
       GROUP BY 1,2,3
       ORDER BY o.id, o.created_at
 
