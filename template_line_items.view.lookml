@@ -1,5 +1,6 @@
 - view: template_line_items
   extends: spree_line_items
+  sql_table_name: spree_line_items
   fields:
     
   - measure: count_in_first_time_orders
