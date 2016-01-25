@@ -47,6 +47,11 @@
       from: template_products
       foreign_key: product_variants.product_id
     
+    - join: reimbursements
+      from: spree_reimbursements
+      sql_on: ${reimbursements.order_id} = ${orders.id}
+      relationship: many_to_one
+    
     # can join payment info here too
 
 - explore: template_users
