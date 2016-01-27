@@ -24,6 +24,9 @@
   from: template_order_product_affinity
   extends: template_order_product_affinity
   
+- explore: spree_refunds
+  label: "Refunds"
+  
   
 - explore: spree_return_authorizations
   label: "Returns"

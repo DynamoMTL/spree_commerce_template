@@ -34,3 +34,8 @@
   - measure: count
     type: count
     drill_fields: [id]
+  
+  - measure: total
+    type: sum
+    sql: ${TABLE}.amount
+    value_format: '$#,###'
