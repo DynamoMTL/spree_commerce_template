@@ -83,4 +83,8 @@
   - measure: count
     type: count
     drill_fields: [id]
+  
+  - measure: total_quantity
+    type: sum
+    sql: ${TABLE}.quantity
 

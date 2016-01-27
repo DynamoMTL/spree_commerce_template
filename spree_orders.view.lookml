@@ -192,4 +192,12 @@
   - measure: count
     type: count
     drill_fields: [id, first_name, last_name]
+  
+  - measure: total_items
+    type: sum
+    sql: ${TABLE}.item_count
+  
+  - measure: average_items_in_order
+    type: avg
+    sql: ${TABLE}.item_count
 
