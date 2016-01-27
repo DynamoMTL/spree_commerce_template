@@ -26,6 +26,16 @@
   
 - explore: spree_refunds
   label: "Refunds"
+  joins:
+    - join: payments
+      from: spree_payments
+      fields: []
+      foreign_key: spree_refunds.payment_id
+      
+    - join: orders
+      from: spree_orders
+      sql_on: ${orders.id} = ${payments.order_id}
+      relationship: many_to_one
   
   
 - explore: spree_return_authorizations
