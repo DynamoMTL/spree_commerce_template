@@ -28,7 +28,7 @@
     
   - dimension_group: completed
     type: time
-    timeframes: [time, date, week, month, year]
+    timeframes: [time, date, week, month, year, month_num, raw]
     sql: ${TABLE}.completed_at  
     
   - dimension_group: created
@@ -36,41 +36,45 @@
     timeframes: [time, date, week, month, year]
     sql: ${TABLE}.created_at  
     
-  - dimension: created_week_index
-    type: int
-    sql: |
-      cast(EXTRACT(week FROM ${TABLE}.created_at) as unsigned)    
+#   - dimension: months_since_signup
+#     type: number
+#     sql: TIMESTAMPDIFF( MONTH ,${users.created_raw},${completed_raw})  
     
-  - dimension: created_quarter
-    sql: CONCAT(${created_year},' ','Q',FLOOR(MONTH(${created_date})/4)+1)    
-    
-  - dimension: completed_quarter
-    sql: CONCAT(${completed_year},' ','Q',FLOOR(MONTH(${completed_date})/4)+1)
-    
-  - dimension: completed_week_for_yoy
-    type: date_week
-    sql: ${completed_date_for_yoy}
-    
-  - dimension: completed_month_for_yoy
-    type: date_month
-    sql: ${completed_date_for_yoy}
-        
-  - dimension: completed_date_for_yoy
-    hidden: true
-    type: date_date
-    # Find how many years in the past this was, then add that to the date
-    sql: |
-      CASE
-        -- when the order is in the current YTD, just return it
-        WHEN ${completed_date} BETWEEN DATE_FORMAT(CURDATE() ,'%Y-01-01') AND CURDATE()
-          THEN ${completed_date}
-        -- when the order is from before this day last year, add a year to it
-        WHEN ${completed_date} BETWEEN (DATE_FORMAT(CURDATE() ,'%Y-01-01') - INTERVAL 1 YEAR) AND (CURDATE() - INTERVAL 1 YEAR)
-          THEN ${completed_date} + INTERVAL 1 YEAR
-        --  otherwise exclude
-        ELSE
-          NULL
-      END    
+#   - dimension: created_week_index
+#     type: int
+#     sql: |
+#       cast(EXTRACT(week FROM ${TABLE}.created_at) as unsigned)    
+#     
+#   - dimension: created_quarter
+#     sql: CONCAT(${created_year},' ','Q',FLOOR(MONTH(${created_date})/4)+1)    
+#     
+#   - dimension: completed_quarter
+#     sql: CONCAT(${completed_year},' ','Q',FLOOR(MONTH(${completed_date})/4)+1)
+#     
+#   - dimension: completed_week_for_yoy
+#     type: date_week
+#     sql: ${completed_date_for_yoy}
+#     
+#   - dimension: completed_month_for_yoy
+#     type: date_month
+#     sql: ${completed_date_for_yoy}
+#         
+#   - dimension: completed_date_for_yoy
+#     hidden: true
+#     type: date_date
+#     # Find how many years in the past this was, then add that to the date
+#     sql: |
+#       CASE
+#         -- when the order is in the current YTD, just return it
+#         WHEN ${completed_date} BETWEEN DATE_FORMAT(CURDATE() ,'%Y-01-01') AND CURDATE()
+#           THEN ${completed_date}
+#         -- when the order is from before this day last year, add a year to it
+#         WHEN ${completed_date} BETWEEN (DATE_FORMAT(CURDATE() ,'%Y-01-01') - INTERVAL 1 YEAR) AND (CURDATE() - INTERVAL 1 YEAR)
+#           THEN ${completed_date} + INTERVAL 1 YEAR
+#         --  otherwise exclude
+#         ELSE
+#           NULL
+#       END    
     
   # MEASURES
 
